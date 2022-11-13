@@ -1,0 +1,251 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+    <title>Gradwell Security</title>
+</head>
+
+<body>
+    <section class="vh-100">
+        <div class="container-fluid h-custom">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-md-9 col-lg-6 col-xl-5">
+                    <img src="./img/guard.jpg" class="img-fluid" alt="Sample image">
+                </div>
+                <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                    <form action="login.php" method="POST">
+                    <!-- <form name="f1" action="login.php" onsubmit="return validation()" method="POST"> -->
+                        <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
+                            <p class="lead fw-normal mb-0 me-3">Sign in with</p>
+                            <button type="button" class="btn btn-primary btn-floating mx-1">
+                                <i class="fab fa-facebook-f"></i>
+                            </button>
+
+                            <button type="button" class="btn btn-primary btn-floating mx-1">
+                                <i class="fab fa-twitter"></i>
+                            </button>
+
+                            <button type="button" class="btn btn-primary btn-floating mx-1">
+                                <i class="fab fa-linkedin-in"></i>
+                            </button>
+                        </div>
+
+                        <div class="divider d-flex align-items-center my-4">
+                            <p class="text-center fw-bold mx-3 mb-0">Or</p>
+                        </div>
+
+                        <!-- Username input -->
+                        <div class="form-outline mb-4">
+                            <input type="text" id="username" name="username" class="form-control form-control-lg"
+                            required="true" placeholder="Enter username" />
+                            <label class="form-label" for="username">Username</label>
+                        </div>
+
+                        <!-- Password input -->
+                        <div class="input-group mb-4">
+                            <div class="form-outline">
+
+                                <!-- <input type="text" class="form-control" placeholder="Recipient's username"
+                                aria-label="Recipient's username" aria-describedby="basic-addon2" /> -->
+                                <input type="password" name="password" type="password" value=""
+                                    class="form-control form-control-lg" id="password" placeholder="Enter password"
+                                    required="true" aria-label="password" aria-describedby="basic-addon1" />
+                                <label class="form-label" for="password">Password</label>
+                            </div>
+
+                            <span class="input-group-text" style="height: auto;" onclick="password_show_hide();">
+                                <i class="fas fa-eye" id="show_eye"></i>
+                                <i class="fas fa-eye-slash d-none" id="hide_eye"></i>
+                            </span>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <!-- Checkbox -->
+                            <div class="form-check mb-0">
+                                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+                                <label class="form-check-label" for="form2Example3">
+                                    Remember me
+                                </label>
+                            </div>
+                            <a href="#!" class="text-body">Forgot password?</a>
+                        </div>
+
+                        <div class="text-center text-lg-start mt-4 pt-2">
+                            <button type="submit" class="btn btn-primary btn-lg"
+                                style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+                            <button type="button" class="btn btn-secondary btn-lg" data-mdb-toggle="modal"
+                                data-mdb-target="#exampleModal" style="padding-left: 2.5rem; padding-right: 2.5rem;">
+                                Sign up
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div
+            class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
+            <!-- Copyright -->
+            <div class="text-white mb-3 mb-md-0">
+                Designed by Muddasar. Copyright © 2022. All rights reserved.
+            </div>
+            <!-- Copyright -->
+
+            <!-- Right -->
+            <div>
+                <a href="#!" class="text-white me-4">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#!" class="text-white me-4">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#!" class="text-white me-4">
+                    <i class="fab fa-google"></i>
+                </a>
+                <a href="#!" class="text-white">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+            <!-- Right -->
+        </div>
+    </section>
+
+    <!-- Register Signup -->
+
+    <!-- Modal -->
+    <form name="signup" action="signup.php" method="POST">
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Sign up</h5>
+                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- First name input -->
+                        <div class="form-outline mb-2">
+                            <input type="text" id="f_name" name="f_name" class="form-control form-control-lg"
+                                required="true" placeholder="Enter First name" />
+                            <label class="form-label" for="username">First name</label>
+                        </div>
+                        <!-- Last name input -->
+                        <div class="form-outline mb-2">
+                            <input type="text" id="l_name" name="l_name" class="form-control form-control-lg"
+                                required="true" placeholder="Enter Last name" />
+                            <label class="form-label" for="username">Last name</label>
+                        </div>
+                        <!-- Username input -->
+                        <div class="form-outline mb-2">
+                            <input type="text" id="modal_username" name="modal_username" class="form-control form-control-lg"
+                            required="true" placeholder="Enter username" />
+                            <label class="form-label" for="modal_username">Username</label>
+                        </div>
+
+                        <!-- Password input -->
+                        <div class="input-group mb-2">
+                            <div class="form-outline">
+
+                                <!-- <input type="text" class="form-control" placeholder="Recipient's username"
+                                aria-label="Recipient's username" aria-describedby="basic-addon2" /> -->
+                                <input type="password" name="modal_password" type="password" value=""
+                                    class="form-control form-control-lg" id="modal_password" placeholder="Enter password"
+                                    required="true" aria-label="password" aria-describedby="basic-addon1" />
+                                <label class="form-label" for="modal_password">Password</label>
+                            </div>
+
+                            <span class="input-group-text" style="height: auto;" onclick="modal_password_show_hide();">
+                                <i class="fas fa-eye" id="modal_show_eye"></i>
+                                <i class="fas fa-eye-slash d-none" id="modal_hide_eye"></i>
+                            </span>
+                        </div>
+
+                        <!-- Phone input -->
+                        <div class="form-outline mb-2">
+                            <input type="text" id="phone" name="phone" class="form-control form-control-lg"
+                                placeholder="Enter Phone No" />
+                            <label class="form-label" for="phone">Phone</label>
+                        </div>
+                        <!-- Email input -->
+                        <div class="form-outline mb-2">
+                            <input type="email" id="email" name="email" class="form-control form-control-lg"
+                                placeholder="Enter Email" />
+                            <label class="form-label" for="email">Email</label>
+                        </div>
+                        <!-- Address input -->
+                        <div class="form-outline mb-2">
+                            <input type="text" id="address" name="address" class="form-control form-control-lg"
+                                placeholder="Enter Address" />
+                            <label class="form-label" for="address">Address</label>
+                        </div>
+                        <!-- License input -->
+                        <div class="form-outline mb-2">
+                            <input type="text" id="license" name="license" class="form-control form-control-lg"
+                                placeholder="Enter License" />
+                            <label class="form-label" for="license">License</label>
+                        </div>
+                        <!-- Expiry input -->
+                        <div class="form-outline mb-2">
+                            <input type="date" id="expiry" name="expiry" class="form-control form-control-lg"/>
+                            <label class="form-label" for="date">Expiry Date</label>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+    <script>
+        function password_show_hide() {
+            var x = document.getElementById("password");
+            var show_eye = document.getElementById("show_eye");
+            var hide_eye = document.getElementById("hide_eye");
+            hide_eye.classList.remove("d-none");
+            if (x.type === "password") {
+                x.type = "text";
+                show_eye.style.display = "none";
+                hide_eye.style.display = "block";
+            } else {
+                x.type = "password";
+                show_eye.style.display = "block";
+                hide_eye.style.display = "none";
+            }
+        }
+
+        function modal_password_show_hide() {
+            var x = document.getElementById("modal_password");
+            var show_eye = document.getElementById("modal_show_eye");
+            var hide_eye = document.getElementById("modal_hide_eye");
+            hide_eye.classList.remove("d-none");
+            if (x.type === "password") {
+                x.type = "text";
+                show_eye.style.display = "none";
+                hide_eye.style.display = "block";
+            } else {
+                x.type = "password";
+                show_eye.style.display = "block";
+                hide_eye.style.display = "none";
+            }
+        }
+    </script>
+    <!-- MDB -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.js"></script>
+</body>
+
+</html>
