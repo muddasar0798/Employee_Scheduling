@@ -6,10 +6,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav">
-                    <a href="http://localhost/Employee_Scheduling/dashboard.php" class="nav-item nav-link">Dashboard</a>
-                    <a href="http://localhost/Employee_Scheduling/create_timesheet.php" class="nav-item nav-link">Timesheet</a>
-                    <a href="http://localhost/Employee_Scheduling/emp_summary.php" class="nav-item nav-link">Employees</a>
-                    <a href="#" class="nav-item nav-link">Sites</a>
+                    <a href="http://localhost/Employee_Scheduling/dashboard.php" class="nav-item nav-link active">Dashboard</a>
+                    <a href="#" class="nav-item nav-link">Add shift</a>
+                    <a href="http://localhost/Employee_Scheduling/emp_timesheet.php" class="nav-item nav-link">Timesheet</a>
+                    <a href="#" class="nav-item nav-link">Payshubs</a>
                     <a href="#" class="nav-item nav-link">Profile</a>
                     <a href="#" class="nav-item nav-link">Messages</a>
                     <!-- <a href="#" class="nav-item nav-link disabled" tabindex="-1">Reports</a> -->
@@ -20,4 +20,3 @@
             </div>
         </div>
     </nav>
-

@@ -1,4 +1,11 @@
-<?php      
+<?php  
+
+	// $con = mysqli_connect("localhost", "root", "", "db_user_login");
+ 
+	// if(!$con){
+	// 	die("Error: Failed to connect to database!");
+	// }
+
     $host = "localhost";  
     $user = "root";  
     $password = '';  

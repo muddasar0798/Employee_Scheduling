@@ -1,3 +1,72 @@
+
+</div>
+<!-- TABLE CONSTRUCTION -->
+<section>
+<div class="container table-responsive">
+<table class="table table-hover">
+<tr>
+        <th>ID</th>
+        <th>Date</th>
+        <th>S_time</th>
+
+        <!-- <th>btn</th> -->
+    </tr>
+    <!-- PHP CODE TO FETCH DATA FROM ROWS -->
+    <?php
+        // LOOP TILL END OF DATA
+        while($rows=$result->fetch_assoc())
+        {
+
+    ?>
+    <tr>
+        <!-- FETCHING DATA FROM EACH
+            ROW OF EVERY COLUMN -->
+        <td><input style="border:none; width:20px" type="text" name="id" id="id" value="<?php echo $rows['id'];?>"></td>
+        <td><?php echo $rows['date'];?></td>
+
+    </tr>
+    <?php
+        
+        }
+    ?>
+</table>
+
+<table class="table table-hover">
+<tr>
+        <!-- <th>ID</th>
+        <th>Date</th> -->
+        <th>S_time</th>
+
+        <!-- <th>btn</th> -->
+    </tr>
+    <!-- PHP CODE TO FETCH DATA FROM ROWS -->
+    <?php
+        // LOOP TILL END OF DATA
+        while($rows=$result1->fetch_assoc())
+        {
+
+    ?>
+    <tr>
+        <!-- FETCHING DATA FROM EACH
+            ROW OF EVERY COLUMN -->
+        <!-- <td><input style="border:none; width:20px" type="text" name="id" id="id" value="<!?php echo $rows['id'];?>"></td>
+        <td><!?php echo $rows['date'];?></td> -->
+        <td><?php echo $rows['shift_start_time'];?></td>
+
+    </tr>
+    <?php
+        
+        }
+    ?>
+</table>
+
+</div>
+
+
+</section>
+
+
+
 <!-- <form action="add_timesheet.php" method="POST">
     <div class="container">
         <div class="row">

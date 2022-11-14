@@ -1,3 +1,14 @@
+<?php
+    require'connection.php';
+    session_start();
+    $sql = "SELECT * FROM (
+        SELECT * FROM timesheet ORDER BY id DESC LIMIT 45
+     )Var1
+        ORDER BY id ASC;";
+    $result = $con->query($sql);
+    $con->close();
+    ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,39 +27,28 @@
 </head>
 
 <body>
-    <div class="container">
+
+<?php
+    include 'emp_nav.php';
+?>
+
+<div class="container">
         <div class="row">
             <div class="col-12 mt-3 mb-2">
                 <h1 class="text-uppercase text-center">Timesheet</h1>
                 <!-- <p>Statistics on minimal cards with Title &amp; Sub Title.</p> -->
             </div>
         </div>
-        <hr>
-        <div class="row g-3">
-            <div class="col-1">
-                <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Sites: ">
-            </div>
-            <div class="col-2">
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Select</option>
-                    <!-- <option value="1">15 Bruyeres Mews</option> -->
-                    <option value="1">736 Bay St</option>
-                </select>
-            </div>
-            <div class="col-2">
-                <button type="submit" class="btn btn-primary mb-3">Search</button>
-            </div>
-            <div class="col-2">
-                <button type="submit" class="btn btn-secondary mb-3">Create Timesheet</button>
-            </div>
-        </div>
-    </div>
     <hr>
+</div>
+<h1>Under Construction</h1>
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <!-- MDB -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.js"></script>
+
 
 </body>
 

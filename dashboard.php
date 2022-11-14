@@ -1,37 +1,38 @@
+<!DOCTYPE html>
+
 <?php
-session_start();
-       include('connection.php');  
-    //    $username = $_POST['username'];  
-    //    $password = $_POST['password'];  
-         
-    //        //to prevent from mysqli injection  
-    //        $username = stripcslashes($username);  
-    //        $password = stripcslashes($password);  
-    //        $username = mysqli_real_escape_string($con, $username);  
-    //        $password = mysqli_real_escape_string($con, $password);  
-         
-        //    $sql = "select * from login where username = '$username' AND password = '$password' AND status ='1'";  
-        //    $result = mysqli_query($con, $sql);  
-        //    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
-        //    $count = mysqli_num_rows($result);  
-           
-           $sql="select * from login where username = '$username' AND password = '$password' AND status ='1'";
-            $result = mysqli_query($con,$sql);
+    require'connection.php';
+	
+    session_start();
+	if(!ISSET($_SESSION['id'])){
+		header('location:index.php');
+	}
+        $query = mysqli_query($con, "SELECT * FROM `sign_up` WHERE `id`='$_SESSION[id]'") or die(mysqli_error());
+        $fetch = mysqli_fetch_array($query);
+        $id = $fetch['id'];
+        $f_name = $fetch['f_name'];
+        $l_name = $fetch['l_name'];
+        $full_name = $f_name . " " . $l_name;
+        $username = $fetch['username'];
+        $password = $fetch['password'];
+        $phone = $fetch['phone'];
+        $email = $fetch['email'];
+        $address = $fetch['address'];
+        $license = $fetch['license'];
+        $expiry = $fetch['expiry'];
+        $status = $fetch['status'];
+        $position = $fetch['position'];
+        // if($status == 1){
+        //     echo "admin";
+        // }
+        // else{
+        //     echo "emp";
+        // }
 
-            if ($result->num_rows > 0) {
-
-                while ($row = $result->fetch_assoc()) {
-                    $variable = $row["variable"];
-                    $$variable = $row["value"];
-
-                    echo("Name: " . ${variable} . " Value: " . $$variable . "<br>");
-                    exit();
-                }
-            }
+        
 
 ?>
 
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -49,29 +50,73 @@ session_start();
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a href="#" class="navbar-brand">Gradwell Security</a>
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav">
-                    <a href="#" class="nav-item nav-link active">Dashboard</a>
-                    <a href="#" class="nav-item nav-link">Timesheet</a>
-                    <a href="#" class="nav-item nav-link">Employees</a>
-                    <a href="#" class="nav-item nav-link">Sites</a>
-                    <a href="#" class="nav-item nav-link">Profile</a>
-                    <a href="#" class="nav-item nav-link">Messages</a>
-                    <!-- <a href="#" class="nav-item nav-link disabled" tabindex="-1">Reports</a> -->
-                </div>
-                <div class="navbar-nav ms-auto">
-                    <a href="index.html" class="nav-item nav-link">Logout</a>
-                </div>
-            </div>
-        </div>
-    </nav>
 
+<?php
+
+if($position == 1){
+    include 'admin_nav.php';
+?>
+
+        <div class="container">
+            <section>
+                <div class="row">
+                    <div class="col-12 mt-3 mb-3">
+                        <h1 class="text-uppercase text-center">Dashboard</h1>
+                        <!-- <p>Statistics on minimal cards with Title &amp; Sub Title.</p> -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-6 col-md-12 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between p-md-1">
+                                    <div class="d-flex flex-row">
+                                        <div class="align-self-center">
+                                            <!-- <i class="fas fa-pencil-alt text-info fa-3x me-4"></i> -->
+                                            <i class="far fa-user text-info fa-3x me-4"></i>
+                                        </div>
+                                        <div>
+                                            <h4>Total Employees</h4>
+                                            <!-- <p class="mb-0">Monthly blog posts</p> -->
+                                        </div>
+                                    </div>
+                                    <div class="align-self-center">
+                                        <h2 class="h1 mb-0">8</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-md-12 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between p-md-1">
+                                    <div class="d-flex flex-row">
+                                        <div class="align-self-center">
+                                            <!-- <i class="far fa-comment-alt text-warning fa-3x me-4"></i> -->
+                                            <i class="fas fa-map-signs text-danger fa-3x me-4"></i>
+                                        </div>
+                                        <div>
+                                            <h4>Total Sites</h4>
+                                            <!-- <p class="mb-0">Monthly blog posts</p> -->
+                                        </div>
+                                    </div>
+                                    <div class="align-self-center">
+                                        <h2 class="h1 mb-0">2</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+            </section>
+        </div>
+<?php
+}
+else{
+    include 'emp_nav.php';
+?>
     <div class="container">
         <section>
             <div class="row">
@@ -80,53 +125,43 @@ session_start();
                     <!-- <p>Statistics on minimal cards with Title &amp; Sub Title.</p> -->
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xl-6 col-md-12 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between p-md-1">
-                                <div class="d-flex flex-row">
-                                    <div class="align-self-center">
-                                        <!-- <i class="fas fa-pencil-alt text-info fa-3x me-4"></i> -->
-                                        <i class="far fa-user text-info fa-3x me-4"></i>
-                                    </div>
-                                    <div>
-                                        <h4>Total Employees</h4>
-                                        <!-- <p class="mb-0">Monthly blog posts</p> -->
-                                    </div>
-                                </div>
-                                <div class="align-self-center">
-                                    <h2 class="h1 mb-0">8</h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-md-12 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between p-md-1">
-                                <div class="d-flex flex-row">
-                                    <div class="align-self-center">
-                                        <!-- <i class="far fa-comment-alt text-warning fa-3x me-4"></i> -->
-                                        <i class="fas fa-map-signs text-danger fa-3x me-4"></i>
-                                    </div>
-                                    <div>
-                                        <h4>Total Sites</h4>
-                                        <!-- <p class="mb-0">Monthly blog posts</p> -->
-                                    </div>
-                                </div>
-                                <div class="align-self-center">
-                                    <h2 class="h1 mb-0">2</h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="container col-5">
+            <div class="input-group mb-3">
+                <span class="input-group-text col-4" id="basic-addon1">Employee Number</span>
+                <input value="<?php echo $id; ?>" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" readonly />
             </div>
-
+            <div class="input-group mb-3">
+                <span class="input-group-text col-4" id="basic-addon1">Full Name</span>
+                <input value="<?php echo $full_name; ?>" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" readonly />
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text col-4" id="basic-addon1">Phone</span>
+                <input value="<?php echo $phone; ?>" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" readonly />
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text col-4" id="basic-addon1">Email ID</span>
+                <input value="<?php echo $email; ?>" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" readonly />
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text col-4" id="basic-addon1">Address</span>
+                <input value="<?php echo $address; ?>" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" readonly />
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text col-4" id="basic-addon1">License No</span>
+                <input value="<?php echo $license; ?>" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" readonly />
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text col-4" id="basic-addon1">Expiry Date</span>
+                <input value="<?php echo $expiry; ?>" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" readonly />
+            </div>
+        </div>
         </section>
     </div>
+<?php
+}
+
+?>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
